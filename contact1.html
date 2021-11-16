@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Contact</title>
+	<script
+		src="https://code.jquery.com/jquery-3.4.1.js"
+		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+		crossorigin="anonymous"></script>
+	
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body style="background-color: powderblue;">
+
+    <div class="w3-container w3-card" style="background-color: powderblue;">
+        <h3>Submit a Question</h3>
+      </div>
+
+	<form class="w3-container" id="myForm">
+        <br/>
+		<label class="w3-text-black">Name</b></label>
+    	<br/>
+		<input class="w3-input w3-round-large w3-border w3-light-grey w3-animate-input " style="width:50%" name="nameField" />
+		<br/>
+		<label class="w3-text-black">Email <i>(We try and respond within 48 hours of your request, make sure to check your email!)</i></b></label>
+		<input class="w3-input w3-round-large w3-border w3-light-grey w3-animate-input" style="width:50%" name="emailField" />
+		<br/>
+        <label class="w3-text-black">Comment</b></label>
+		<input class="w3-input w3-round-large w3-border w3-light-grey w3-animate-input" style="width:50%; height:100px" name="commentField" />
+		<br/>
+	</form>
+    <div class="w3-container w3-left">
+	<button id="submit" class="w3-btn w3-light-grey w3-round" onclick='SubForm()' >Submit</button>
+    </div>
+
+	<button id="button2" class=" w3-btn w3-light-grey w3-round ">Home</button>
+
+    <script>
+
+        function SubForm (){
+            $.ajax({
+                url:"https://api.apispreadsheets.com/data/18371/",
+                type:"post",
+                data:$("#myForm").serializeArray(),
+                success: function(){
+                    alert("Contact form submitted succesfully :)")
+                    location.href="index.html";
+                },
+                error: function(){
+                    alert("There was an error :(")
+                    location.href="index.html"
+                }
+            });
+        
+        }
+    
+        document.getElementById("button2").onclick = function () {
+            location.href = 'index.html';
+        };
+        
+        
+    
+    
+    
+    
+    </script>
+    
+    </body>
+    </html>

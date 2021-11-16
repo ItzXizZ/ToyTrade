@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Donate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <script
+		src="https://code.jquery.com/jquery-3.4.1.js"
+		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+		crossorigin="anonymous"></script>
+	
+	
+</head>
+<body style="background-color: powderblue;">
+
+  
+        <div class="w3-container w3-card" style="background-color: powderblue;">
+          <h3>Provide a Donation</h3>
+        </div>
+
+	<form class="w3-container" id="myForm">
+        <br/>
+		<label class="w3-text-black">Name</b></label>
+    	<br/>
+		<input class="w3-input w3-round-large w3-border w3-light-grey w3-animate-input " style="width:50%" name="nameField" />
+		<br/>
+		<label class="w3-text-black">Email (You will be notified, by email, of our next publicly accesible drop-off location)</b></label>
+		<input class="w3-input w3-round-large w3-border w3-light-grey w3-animate-input" style="width:50%" name="emailField" />
+		<br/>
+        <label class="w3-text-black">Quantity of items</b></label>
+		<input class="w3-input w3-round-large w3-border w3-light-grey w3-animate-input" style="width:50%" name="itemQuantity" />
+
+		<br><label class="w3-text-black">Type of items (Bicycle, toy train, toy watch, etc)</b></label>
+		<input class="w3-input w3-round-large w3-border w3-light-grey w3-animate-input" style="width:50%" name="itemDescription" />
+
+		<br/>
+	</form>
+    <div class="w3-container w3-left">
+	<button id="submit" class="w3-btn w3-light-grey w3-round" onclick='SubForm()' >Submit</button>
+	<button id="button2" class=" w3-btn w3-light-grey w3-round ">Home</button>
+	<p><i>Toytrade takes no responsibility for the quality or safety of the toys provided. We solely provide a means of connection between the donators and recepients of the toys. By clicking the submit button, the user confirms they will provide only high-quality safe toys that contain no features which may be potentially harmful towards children.</i></p>
+    </div>
+
+	
+
+
+   
+
+<script>
+
+	function SubForm (){
+		$.ajax({
+			url:"https://api.apispreadsheets.com/data/18369/",
+			type:"post",
+			data:$("#myForm").serializeArray(),
+			success: function(){
+			alert("Form was succesfully submitted :)");
+			  
+				location.href = "index.html";  
+			
+
+			},
+			error: function(){
+			alert("There was an error :(")
+			    location.href ="index.html";
+			}
+		});
+
+
+	}
+
+	document.getElementById("button2").onclick = function () {
+        location.href = 'index.html';
+    };
+	
+	
+
+
+
+
+</script>
+
+</body>
+</html>
